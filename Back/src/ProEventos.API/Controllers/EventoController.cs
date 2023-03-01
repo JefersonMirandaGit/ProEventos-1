@@ -47,6 +47,6 @@ public class EventoController : ControllerBase
     [HttpPost]
     public string Post()
     {
-        return "blb bla bla";
+        return "bla bla bla";
     }
 }
