@@ -1,4 +1,4 @@
-
+namespace ProEventos.API.Models{
 public class Evento
 {
     public int EventoId { get; set; }
@@ -8,4 +8,7 @@ public class Evento
     public int? QtdPessoas { get; set; }
     public string? Lote { get; set; }
     public string? ImagemURL { get; set; }
+}
+
+
 }
