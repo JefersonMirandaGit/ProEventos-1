@@ -1,11 +1,84 @@
-<h1>Eventos de Components</h1>
+<h2>Eventos</h2>
+<hr>
+
+<!-- <form action="" class="form-inline">
+  <div class="form-group mb-2">
+    <input type="text" class="form-control mr-2" class="form-control" placeholder="buscar">
+    <button class="btn btn-outline-success" >Buscar</button>
+  </div>
+</form> -->
+
+<div class="form-inline">
+  <div class="form-group mb-3">
+    <label class="mr-2">Filtro: </label>
+    <input
+     type="text"
+     class="form-inline mr-2"
+     placeholder="buscar"
+    [(ngModel)]="filtroLista"
+    >
+  </div>
+  <!-- <button class="btn btn-outline-success mb-2">Buscar</button> -->
+</div>
+<!-- <h3>Filtro: {{filtroLista}}</h3> -->
 
 
+<table class="table table-striped">
+  <thead class="table table-dark">
+    <tr>
+      <th>
+         <button type="button" class="btn btn-outline-light btn-sm" (click)="alterarImagem()">
+          {{!exibirImagem ? 'Exibir':'Ocutar'}}</button>
+        </th>
+      <th>#</th>
+      <th>Tema</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Qtd Pessoas</th>
+      <th>Lote</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="eventos && eventos.length">
+    <tr *ngFor="let evento of eventosFiltrados">
+      <td>
+        <img [collapse]="!exibirImagem"
+             [isAnimated]="true"
+        src="/assets/Fotos/{{evento.imagemURL}}" alt=""
+        [style.width.px]="widthImg"
+        [style.margin.px]="marginImg">
+      </td>
+      <td>{{evento.eventoId}}</td>
+      <!-- <td>{{evento.imagemURL}}</td> -->
+      <td>{{evento.tema}}</td>
+      <td>{{evento.local}}</td>
+      <td>{{evento.dateEvento}}</td>
+      <td>{{evento.qtdPessoas}}</td>
+      <td>{{evento.lote}}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm mr-2">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot *ngIf="!eventos.length">
+    <tr>
+      <td colspan="8" class="text-center">
+        <h4>Nenhum Eventos encontrado!</h4>
 
-<div *ngFor="let evento of eventos">
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+<!-- {{ eventos[0].imagemURL + 1 }}
+
+{{eventos | json}} -->
+
+<!-- <div *ngFor="let evento of eventos">
   <p><b>Tema:</b> {{evento.tema}}</p>
   <p><b>Local:</b> {{evento.local}}</p>
   <hr>
 </div>
 
-
+ -->
