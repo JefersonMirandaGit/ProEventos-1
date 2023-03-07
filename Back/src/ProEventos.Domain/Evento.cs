@@ -15,7 +15,7 @@ namespace ProEventos.Domain
         // public IEnumerable<PalestranteEvento> PalestrantesEventos { get; set; } = null!;
 
 
-         public int Id { get; set; }
+        public int Id { get; set; }
         public string Local { get; set; }
         public DateTime? DataEvento { get; set; }
         public string Tema { get; set; }
