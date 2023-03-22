@@ -524,3 +524,6 @@ Thumbs.db
 *.db
 *.db-shm
 *.db-wal
+
+# ignore 57097d886bcd0c030d6f5962080374c5f8c11223/14.pack
+*.57097d886bcd0c030d6f5962080374c5f8c11223/14.pack
