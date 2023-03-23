@@ -43,7 +43,7 @@ namespace ProEventos.Persistence
 
             if (includePalestrantes)
             {
-                query = query                        
+                query = query
                         .Include(e => e.PalestrantesEventos)
                         .ThenInclude(pe => pe.Palestrante);
             }
