@@ -528,5 +528,7 @@ Thumbs.db
 
 
 #Excluindo Pasta desnecessario subir para git ocasionando estouro de memoria
-*.angular/*
-*.angular/*Front/ProEventos-App/.angular/*
+.angular/*
+.angular/*Front/ProEventos-App/.angular/*
+angular-webpack
+babel-webpack
