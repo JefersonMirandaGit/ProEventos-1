@@ -11,7 +11,9 @@ describe('EventoListaComponent', () => {
       declarations: [ EventoListaComponent ]
     })
     .compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(EventoListaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

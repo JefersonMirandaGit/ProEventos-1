@@ -3,7 +3,6 @@ margin-left:10px;
 font-size: 48px;
 width:50px;
 }
-
 button{
       /* Faz com que o botão apareça na direita */
        /* margin-left: auto;
@@ -12,8 +11,13 @@ button{
       display: inline-block;
       text-align: center;
       vertical-align: top; */
-
-
-
-
+}
+#divright {
+  float: left;
+  width: 86%;
+  margin-right: -4%;
+  height: 50px;
+  text-align: right;
+  margin-top: 1em;
+  margin-top: -0.25rem;
 }

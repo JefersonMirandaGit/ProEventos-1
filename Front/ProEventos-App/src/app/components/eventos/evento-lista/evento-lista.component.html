@@ -7,18 +7,14 @@
           <div class="input-group-text">
             Filtro: </div>
         </div>
-
-        <input
-          type="text"
-          class="form-control"
-          placeholder="buscar"
-          [(ngModel)]="filtroLista">
+        <input type="text" class="form-control" placeholder="buscar" [(ngModel)]="filtroLista">
       </div>
     </div>
+
     <div>
       <a class="d-flex btn btn-outline-primary" routerLink="/eventos/detalhe">
         <i class="fa fa-plus-circle my-1"></i>
-        <b class="ml-1 px-md-1 d-none d-sm-block" >Novo</b>
+        <b class="ml-1 px-md-1 d-none d-sm-block">Novo</b>
       </a>
 
     </div>
@@ -44,8 +40,7 @@
       </tr>
     </thead>
     <tbody *ngIf="eventos && eventos.length">
-      <tr *ngFor="let evento of eventosFiltrados">
-
+      <tr *ngFor="let evento of eventosFiltrados" (click)="detalheEvento(evento.id)" style="cursor: pointer;">
         <td class="d-none d-md-table-cell">
           <img [collapse]="!exibirImagem" [isAnimated]="true" src="/assets/Fotos/{{ evento.imagemURL }}"
             [style.width.px]="widthImg" [style.margin.px]="marginImg">
@@ -56,16 +51,18 @@
         <td class="d-none d-md-table-cell">{{ evento.local }}</td>
         <td>{{ evento.dataEvento| DateFormatPipe }}</td>
         <td class="d-none d-md-table-cell">{{ evento.qtdPessoas }}</td>
-        <td>{{ evento.lotes[0]?.nome }}</td>
-
+        <td>{{ evento.lotes[0]?.nome | uppercase }}</td>
         <td>
-           <button type="button" class="btn btn-primary btn-lg" tooltip="Editar" (click)="detalheEvento(evento.id)" style="cursor: pointer;">
+          <button type="button" class="btn btn-primary btn-lg" tooltip="Editar" (click)="detalheEvento(evento.id)"
+            style="cursor: pointer;">
             <i class="fa fa-edit"></i>
-            </button>
+          </button>
+
           <button type="button" class="btn btn-danger btn-lg" tooltip="Excluir" (click)="openModal(template)">
             <i class="fa fa-trash"></i>
-            </button>
+          </button>
         </td>
+
       </tr>
     </tbody>
     <tfoot *ngIf="!eventos.length">
@@ -82,8 +79,8 @@
 <ng-template #template>
   <div class="modal-body text-center">
     <p>Tem certeza que deseja deletar o eventos?</p>
-    <button type="button" class="btn btn-primary" (click)="confirm()">Sim</button>
-    <button type="button" class="btn btn-default" (click)="decline()">Não</button>
+    <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
   </div>
 </ng-template>
 

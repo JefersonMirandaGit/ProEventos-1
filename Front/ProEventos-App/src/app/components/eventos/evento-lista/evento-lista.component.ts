@@ -15,21 +15,22 @@ export class EventoListaComponent {
 
   modalRef?: BsModalRef;
   public eventos: Evento[] = [];
-  public eventosFiltrados: any []= [];
+  public eventosFiltrados: any[] = [];
 
   public widthImg: number = 150;
   public marginImg: number = 2;
   public exibirImagem: boolean = true;
   private filtroListado: string = '';
 
-  public get filtroLista() {
+  public get filtroLista(): string {
     return this.filtroListado;
   }
 
   public set filtroLista(value: string) {
     this.filtroListado = value;
     this.eventosFiltrados = this.filtroLista ?
-    this.filtrarEventos(this.filtroLista) : this.eventos;
+      this.filtrarEventos(this.filtroLista) :
+      this.eventos;
   }
 
   public filtrarEventos(filtrarPor: string): Evento[] {
@@ -45,15 +46,13 @@ export class EventoListaComponent {
     private modalService: BsModalService,
     private toastr: ToastrService,
     private spinner: NgxSpinnerService,
-    private router : Router
+    private router: Router
 
-    ) { }
+  ) { }
 
   public ngOnInit(): void {
     this.spinner.show();
     this.getEventos();
-
-    //this.spinner.show();
 
     // ANALISAR O POR QUE O SPINNER NÂO ESTÁ APARECENDO A BOLINHA
 
@@ -71,6 +70,8 @@ export class EventoListaComponent {
   public alterarImagem(): void {
     this.exibirImagem = !this.exibirImagem;
   }
+
+
   public getEventos(): void {
     this.eventoService.getEventos().subscribe({
       next: (eventos: Evento[]) => {
@@ -85,27 +86,14 @@ export class EventoListaComponent {
     });
   }
 
-  // public getEventos(): void {
-  //   this.eventoService.getEventos().subscribe(
-  //     (eventoResp: Evento[]) => {
-  //       this.eventos = eventoResp;
-  //       this.eventosFiltrados = this.eventos;
-  //     },
-
-  //     error => console.log(error)
-  //   );
-  // }
-
-
-  openModal(template: TemplateRef<any>) : void{
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  openModal(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
   confirm(): void {
     // this.message = 'Confirmed!';
     this.modalRef?.hide();
     this.toastr.success('Evento deletado com sucesso!', 'Sucesso!');
-
   }
 
   decline(): void {
@@ -113,8 +101,9 @@ export class EventoListaComponent {
     this.modalRef?.hide();
   }
 
-  detalheEvento(id: number): void{
+  detalheEvento(id: number): void {
     this.router.navigate([`eventos/detalhe/${id}`]);
   }
+
 
 }

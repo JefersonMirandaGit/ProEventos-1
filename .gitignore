@@ -509,6 +509,7 @@ yarn-error.log
 
 # Miscellaneous
 /.angular/cache
+/.angular/cache/*
 .sass-cache/
 /connect.lock
 /coverage
@@ -525,5 +526,7 @@ Thumbs.db
 *.db-shm
 *.db-wal
 
-# ignore 57097d886bcd0c030d6f5962080374c5f8c11223/14.pack
-*.57097d886bcd0c030d6f5962080374c5f8c11223/14.pack
+
+#Excluindo Pasta desnecessario subir para git ocasionando estouro de memoria
+*.angular/*
+*.angular/*Front/ProEventos-App/.angular/*
