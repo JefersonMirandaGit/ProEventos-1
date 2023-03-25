@@ -19,14 +19,15 @@
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
     "@fortawesome/fontawesome-free": "^6.3.0",
-    "bootstrap": "^5.2.3",
-    "bootswatch": "^5.2.3",
-    "ngx-bootstrap": "^10.2.0",
-    "ngx-spinner": "^15.0.1",
-    "ngx-toastr": "^16.1.0",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.12.0"
+
+    "bootstrap": "^4.6.0",
+    "bootswatch": "^4.6.0",
+    "ngx-bootstrap": "^6.2.0",
+    "ngx-spinner": "^10.0.1",
+    "ngx-toastr": "^13.2.0",
+    "rxjs": "~6.5.5",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.1",
