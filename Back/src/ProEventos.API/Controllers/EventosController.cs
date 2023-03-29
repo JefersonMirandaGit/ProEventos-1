@@ -80,6 +80,7 @@ namespace ProEventos.API.Controllers
         {
             try
             {
+                
                 var evento = await _eventoServices.AddEventos(model);
 
                 if (evento == null)
@@ -117,7 +118,8 @@ namespace ProEventos.API.Controllers
             try
             {
                 if (await _eventoServices.DeleteEventos(id))
-                    return Ok("Registro Deletado!");
+                    //return Ok("Registro Deletado!");
+                    return Ok(new {message = "Registro Deletado!"});
                 else
                     return BadRequest("Erro ao tentar deletar evento!");
 

@@ -16,6 +16,7 @@ export class EventoListaComponent {
   modalRef?: BsModalRef;
   public eventos: Evento[] = [];
   public eventosFiltrados: any[] = [];
+  public eventoId: number;
 
   public widthImg: number = 150;
   public marginImg: number = 2;
@@ -52,7 +53,7 @@ export class EventoListaComponent {
 
   public ngOnInit(): void {
     this.spinner.show();
-    this.getEventos();
+    this.carregarEventos();
 
     // ANALISAR O POR QUE O SPINNER NÂO ESTÁ APARECENDO A BOLINHA
 
@@ -72,7 +73,7 @@ export class EventoListaComponent {
   }
 
 
-  public getEventos(): void {
+  public carregarEventos(): void {
     this.eventoService.getEventos().subscribe({
       next: (eventos: Evento[]) => {
         this.eventos = eventos;
@@ -86,14 +87,31 @@ export class EventoListaComponent {
     });
   }
 
-  openModal(template: TemplateRef<any>): void {
+  openModal(event: any, template: TemplateRef<any>, eventoId: number): void {
+    event.stopPropagation();
+    this.eventoId = eventoId;
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
   confirm(): void {
-    // this.message = 'Confirmed!';
-    this.modalRef?.hide();
-    this.toastr.success('Evento deletado com sucesso!', 'Sucesso!');
+    this.modalRef.hide();
+    this.spinner.show();
+
+    this.eventoService.deleteEvento(this.eventoId).subscribe(
+      (result: any) => {
+        console.log(result)
+          this.toastr.success('Evento deletado com sucesso!', 'Sucesso!');
+          this.carregarEventos();
+
+      },
+      (error: any) => {
+        console.error(error);
+        this.toastr.error(`Erro ao tentar deletar o evento ${this.eventoId}`, 'Erro');
+
+      },
+      () => this.spinner.hide(),
+    ).add(   () => this.spinner.hide());
+
   }
 
   decline(): void {

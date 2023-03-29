@@ -31,7 +31,7 @@ namespace ProEventos.Application
 
                 if (await _geralPersistence.SaveChangesAsync())
                 {
-                    var eventoRetorno = await _eventosPersistence.GetEventosByIdAsync(model.Id, false);
+                    var eventoRetorno = await _eventosPersistence.GetEventosByIdAsync(evento.Id, false);
                     return _mapper.Map<EventoDto>(eventoRetorno);
 
                 }
